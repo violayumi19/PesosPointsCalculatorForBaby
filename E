@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pesos & Points Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+    .container {
+      max-width: 500px;
+      margin: auto;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    h2 {
+      text-align: center;
+    }
+    label, input, button {
+      display: block;
+      width: 100%;
+      margin-bottom: 15px;
+      font-size: 16px;
+    }
+    input {
+      padding: 10px;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    .result {
+      font-weight: bold;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Pesos & Points Calculator</h2>
+
+    <label for="pesos">Enter Pesos:</label>
+    <input type="number" id="pesos" placeholder="e.g. 100">
+    <button onclick="convertToPoints()">Convert to Points</button>
+    <div class="result" id="pointsResult"></div>
+
+    <hr>
+
+    <label for="points">Enter Points:</label>
+    <input type="number" id="points" placeholder="e.g. 500">
+    <button onclick="convertToPesos()">Convert to Pesos</button>
+    <div class="result" id="pesosResult"></div>
+  </div>
+
+  <script>
+    function convertToPoints() {
+      const pesos = parseFloat(document.getElementById("pesos").value);
+      if (!isNaN(pesos)) {
+        const points = pesos / 0.3;
+        document.getElementById("pointsResult").innerText = `${pesos} pesos = ${points.toFixed(2)} points`;
+      } else {
+        document.getElementById("pointsResult").innerText = "Please enter a valid number of pesos.";
+      }
+    }
+
+    function convertToPesos() {
+      const points = parseFloat(document.getElementById("points").value);
+      if (!isNaN(points)) {
+        const pesos = points * 0.3;
+        document.getElementById("pesosResult").innerText = `${points} points = ${pesos.toFixed(2)} pesos`;
+      } else {
+        document.getElementById("pesosResult").innerText = "Please enter a valid number of points.";
+      }
+    }
+  </script>
+</body>
+</html>
